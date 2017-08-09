@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+      <constant name="struts.multipart.maxSize" value="150000000"/>
+	<package name="zzuAction02" extends="struts-default" namespace="/">
+		<!-- class属性里面不写action全路径了，因为写，action对象创建两次
+			写spring配置的action的bean的id值
+		 -->
+		 <interceptors>
+		 <interceptor-stack name="myinte">
+		 <interceptor-ref name="defaultStack">
+		 <param name="fileUpload.maximumSize">8097152</param>		 
+		 <param name="fileUpload.allowedExtensions">.jpg,.png,.jpeg,.tem,.svg,.swf,.jpeg2000</param>
+		 </interceptor-ref>
+		 </interceptor-stack>
+		 </interceptors>
+         
+		
+		 <!-- 单文件上传 -->
+        <action name="upload" class="imageupload" method="upload">
+        <interceptor-ref name="myinte"></interceptor-ref>
+         <result name="success">fileDownloadAndUpload/upload.jsp</result>
+         <result name="input">fileDownloadAndUpload/upload.jsp</result>
+         
+        </action>
+		 <!-- 多文件上传 -->
+        <action name="imagesupload" class="imagesupload" >
+        <interceptor-ref name="myinte"></interceptor-ref>
+         
+         <result name="input">fileDownloadAndUpload/upload.jsp</result>
+         
+        </action>
+        <!-- 文件下载 -->
+        <action name="filedownload" class="imagefiledownload">
+         <result name="success" type="stream">
+        <param name="contentType">application/jpg/jpeg/png/svg/swf/jpeg2000</param>
+        <param name="inputName">targetFile</param>
+        <param name="contentDisposition">filename="${imageURL}"</param>
+        <param name="bufferSize">4096</param>
+        <param name="input">error.html</param>
+        </result>
+        </action>
+	</package>
+	
+</struts>

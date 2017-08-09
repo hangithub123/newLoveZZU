@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="zzuAction01" extends="struts-default" namespace="/">
+		<!-- class属性里面不写action全路径了，因为写，action对象创建两次
+			写spring配置的action的bean的id值
+		 -->
+	 
+		 
+		<action name="userAction" class="userAction">
+		 <result name="input">/persionalCenter/user/user_register.jsp</result>
+		</action>
+		<action name="loginAction" class="loginAction" >
+		 
+		 <result name="input">/persionalCenter/user/user_login.jsp</result>
+		</action>
+		<action name="userinfoAction" class="UserinfoAction"></action>
+		<action name="queryuserinfoAction" class="queryuserinfo_action"></action>
+		
+		<action name="creatimage" class="creatimage">
+		 <result name="success" type="stream">
+                    <param name="contentType">image/jpeg</param>
+                    <param name="inputName">inputStream</param>
+                </result>
+		</action>
+            
+              <action name="loginValidateAction" class="com.xiaoluo.action.LoginValidateAction">
+                <result name="success" >/success.jsp</result>
+                <result name="input">/login.jsp</result>
+            </action>
+            <!-- 管理员 -->
+              <action name="adminAction_*" class="admin" method="{1}">
+                
+                <result name="success" >/WEB-INF/admin/admin.jsp</result>
+                <result name="input" >adminlogin.jsp</result>
+                <result name="loginout" type="redirect">adminlogin.jsp</result>
+                <result name="returnUgoods" >/admin/auditGoods.jsp</result>
+                
+                
+                
+            </action>
+		
+	</package>
+	
+</struts>

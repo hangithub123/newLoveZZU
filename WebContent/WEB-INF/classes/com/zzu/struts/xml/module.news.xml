@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="zzuAction04" extends="struts-default" namespace="/">
+		<!-- class属性里面不写action全路径了，因为写，action对象创建两次
+			写spring配置的action的bean的id值addAdvisoryAndNewsAction
+		 -->
+		
+		<action name="addNewsAction" class="addNewsAction" method="upload">
+		<result name="success">/schoolNewsSubjectResultlSuccess.jsp</result>
+		</action>
+		
+		<action name="newsAction" class="newsAction" ></action>
+		
+		<action name="addAdvisoryAndNewsAction" class="addAdvisoryAndNewsAction" method="upload">
+		<result name="success">/addAdvisoryAndNewsSuccess.jsp</result>
+		</action>
+		
+		<action name="addSocietyNewsAction" class="addSocietyNewsAction" method="save">
+		<result name="success">/addSocietyNewsSuccess.jsp</result>
+		</action>
+		<action name="societyNewsAction" class="societyNewsAction" ></action>
+	</package>
+	
+</struts>

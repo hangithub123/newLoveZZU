@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="life.taoyu.entity.Order" table="t_order" dynamic-update="true">
+    <id name="order_id" >
+    <generator class="native"></generator>
+    </id>
+     <property name="order_status"></property>
+     <property name="order_date"></property>
+     <property name="address"></property>
+     <property name="name"></property>
+     <property name="phone"></property>
+     <property name="total"></property>
+    
+    
+     
+   <many-to-one name="user" class="persionalCenter.entity.User" column="UO_id" lazy="false" ></many-to-one>
+   
+     <!-- 配置关联订单项表 -->
+		<set name="setorderitems" cascade="all" inverse="true" >
+		<key column="OOItems_id"></key>
+		<one-to-many  class="life.taoyu.entity.OrderItems"/>
+		</set>
+   </class>
+   
+   
+   </hibernate-mapping>

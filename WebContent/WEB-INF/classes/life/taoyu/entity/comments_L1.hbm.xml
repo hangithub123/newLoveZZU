@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="life.taoyu.entity.Comments_L1" table="t_comments_L1" dynamic-update="true">
+    <id name="L1_Cid" >
+    <generator class="native"></generator>
+    </id>
+     <property name="comments"></property>
+     <property name="num_replies"></property>
+       <property name="num_thumb"></property>
+       <property name="account"></property>
+     <property name="Cdate"></property>
+
+   <many-to-one name="Cgoods" class="life.taoyu.entity.Goods" column="GC_id" lazy="false">
+  
+   </many-to-one>
+  <!-- 配置二级评论表-->
+  <set name="setcomments_L2" cascade="all" inverse="true">
+  <key column="LL_id"></key>
+  <one-to-many class="life.taoyu.entity.Comments_L2" />
+  </set>
+  
+   </class>
+   </hibernate-mapping>

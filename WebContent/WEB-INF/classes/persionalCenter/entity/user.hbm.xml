@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="persionalCenter.entity.User" table="t_user" >
+		<id name="uid" column="uid" >
+			<generator class="native"></generator>
+		</id>
+		<property name="phone" column="phone"></property>
+		<property name="password" column="password"></property>
+		<property name="account" column="account"></property>
+		<property name="verification_code" column="verification_code"></property>
+		<property name="SessionID" column="SessionID"></property>
+		<property name="SessionIDDate" column="SessionIDDate"></property>
+		
+   <!-- 配置关联用户信息表 -->
+		<set name="setuserinfo" cascade="save-update" >
+		<key column="ul_id"></key>
+		<one-to-many  class="persionalCenter.entity.UserInfo"/>
+		</set> 
+   <!-- 配置关联订单表 -->
+		<set name="setorder" cascade="save-update" inverse="true" >
+		<key column="UO_id"></key>
+		<one-to-many  class="life.taoyu.entity.Order"/>
+		</set>
+  
+   <!-- 配置关联商品表 -->
+		<set name="setgoods" cascade="save-update" inverse="true" >
+		<key column="UG_id"></key>
+		<one-to-many  class="life.taoyu.entity.Goods"/>
+		</set>
+   <!-- 配置关联购物车表 -->
+		<set name="setcart" cascade="save-update" inverse="true" >
+		<key column="UCart_id"></key>
+		<one-to-many  class="life.taoyu.entity.Cart"/>
+		</set>
+ 
+	</class>
+</hibernate-mapping>

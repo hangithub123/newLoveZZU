@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="zzuAction03" extends="struts-default" namespace="/">
+		<!-- class属性里面不写action全路径了，因为写，action对象创建两次
+			写spring配置的action的bean的id值
+		 -->
+		<action name="addAdvisory" class="addAdvisoryImgAction" method="upload">
+		<result name="success">/advisorySuccess.jsp</result>
+		</action>
+		
+		<action name="advisory" class="advisoryAction" ></action>
+		
+        <action name="addCarousel" class="addCarouselImgAction" method="upload">
+		<result name="success">/carouselSuccess.jsp</result>
+		</action>
+		
+		<action name="carousel" class="carouselAction"></action>
+		
+		 <action name="addNavigation" class="addNavigationImgAction" method="upload">
+		<result name="success">/navigationSuccess.jsp</result>
+		</action>
+		
+		<action name="navigation" class="navigationAction"></action>
+		
+		 <action name="addSociety" class="addSocietyImgAction" method="upload">
+		<result name="success">/societySuccess.jsp</result>
+		</action>
+		
+		<action name="society" class="societyAction"></action>
+		<action name="reSoReNum" class="reSoReNumAction"></action>
+	    <action name="bareHeart" class="bareHeartAction"/>
+	</package>
+	
+</struts>

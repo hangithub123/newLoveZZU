@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="zzuAction02" extends="struts-default" namespace="/">
+		<!-- class属性里面不写action全路径了，因为写，action对象创建两次
+			写spring配置的action的bean的id值
+		 -->
+      
+        
+        <action name="filedownload2" class="filedownload">
+         <param name="inputPath">\uploadFiles\aa.jpg</param>
+         <result name="success" type="stream">
+        <param name="contentType">application/jpg/rar</param>
+        <param name="inputName">targetFile</param>
+        <param name="contentDisposition">filename="aa.jpg"</param>
+        <param name="bufferSize">4096</param>
+        </result>
+        </action>
+        <action name="upload" class="uploadAction" >
+        </action>
+	</package>
+	
+</struts>

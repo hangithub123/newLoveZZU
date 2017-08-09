@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="zzuAction03" extends="struts-default" namespace="/">
+		<!-- class属性里面不写action全路径了，因为写，action对象创建两次
+			写spring配置的action的bean的id值
+		 -->
+		<action name="publishgoodsAction" class="publishgoodsAction"></action>
+		<action name="querygoodsAction" class="querygoodsAction"></action>
+		<action name="comments_L1Action" class="comments_L1Action"></action>
+		<action name="comments_L2Action" class="comments_L2Action"></action>
+		<action name="cartAction" class="cartAction"></action>
+		<action name="OrderAction" class="OrderAction">
+		
+		 </action>
+		
+		
+		<action name="TestAction" class="TestAction">
+		 <result name="sss" type="chain">OrderAction</result>
+		</action>
+	
+		
+	
+		
+	</package>
+	
+</struts>

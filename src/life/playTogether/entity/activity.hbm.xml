@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="life.playTogether.entity.Activity" table="t_activity">
+    <id name="a_id" >
+    	<generator class="native" />
+    </id>
+    <property name="a_phone" />
+    <property name="a_userName" />
+    <property name="a_userImg" />
+    <property name="a_date" generated="insert" type="java.sql.Timestamp">
+    	<column name="a_date" default="current_timestamp" sql-type="timestamp" not-null="true"/>
+    </property>
+    <property name="a_title" />
+    <property name="a_img" />
+    <property name="a_content" />
+    <property name="a_praiseNumber" />
+    <property name="a_commentNumber" />
+    <property name="a_shareUrl" />
+   </class>
+   </hibernate-mapping>

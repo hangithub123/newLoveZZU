@@ -1,0 +1,76 @@
+package com.zzu.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="t_societyNews")
+@Component(value="societyNews")
+public class SocietyNews {
+
+	@Id @Column(name="News_Id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer News_Id;
+    private String News_Title;
+    private String Author;
+    private String Subject;
+    private String Time;
+    private String ReadNumber;
+    private String LikesNumber;
+    private String CommentNumber;
+    public Integer getNews_Id() {
+		return News_Id;
+	}
+	public void setNews_Id(Integer news_Id) {
+		News_Id = news_Id;
+	}
+	public String getNews_Title() {
+		return News_Title;
+	}
+	public void setNews_Title(String news_Title) {
+		News_Title = news_Title;
+	}
+	public String getAuthor() {
+		return Author;
+	}
+	public void setAuthor(String author) {
+		Author = author;
+	}
+	public String getSubject() {
+		return Subject;
+	}
+	public void setSubject(String subject) {
+		Subject = subject;
+	}
+	public String getTime() {
+		return Time;
+	}
+	public void setTime(String time) {
+		Time = time;
+	}
+	public String getReadNumber() {
+		return ReadNumber;
+	}
+	public void setReadNumber(String readNumber) {
+		ReadNumber = readNumber;
+	}
+	public String getLikesNumber() {
+		return LikesNumber;
+	}
+	public void setLikesNumber(String likesNumber) {
+		LikesNumber = likesNumber;
+	}
+	public String getCommentNumber() {
+		return CommentNumber;
+	}
+	public void setCommentNumber(String commentNumber) {
+		CommentNumber = commentNumber;
+	}
+	
+}

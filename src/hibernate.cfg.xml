@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	
+	
+	<!-- 输出底层sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 输出底层sql语句格式 -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- hibernate帮创建表，需要配置之后 
+			update: 如果已经有表，更新，如果没有，创建
+		-->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- 配置数据库方言
+			在mysql里面实现分页 关键字 limit，只能使用mysql里面
+			在oracle数据库，实现分页rownum
+			让hibernate框架识别不同数据库的自己特有的语句
+		 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	
+<!-- 实体类类路径 -->
+<mapping class="life.parTime.entity.PartTimeJob"/>
+
+<mapping class="life.topicCircle.entity.Subject"/>
+<mapping class="life.topicCircle.entity.Topic"/>
+<mapping class="life.topicCircle.entity.TopicContent"/>
+<mapping class="life.topicCircle.entity.SubjectPraise"/>
+<mapping class="life.topicCircle.entity.TopicPraise"/>
+<mapping class="life.topicCircle.entity.TopicContentPraise"/>
+
+<mapping class="life.treeHole.entity.TreeHolePraise"/>
+<mapping class="life.treeHole.entity.TreeHoleCommentPraise"/>
+<mapping resource="life/treeHole/entity/treehole.hbm.xml"/>
+<mapping resource="life/treeHole/entity/treeholeComment.hbm.xml"/>
+
+<mapping class="com.zzu.entity.SocietyNews"/>
+<mapping class="com.zzu.entity.Advisory"/>
+<mapping class="com.zzu.entity.SchoolNewsSubjectResult"/>
+
+
+<mapping resource="com/zzu/entity/carousel.hbm.xml"/>
+<mapping resource="com/zzu/entity/navigation.hbm.xml"/>
+<mapping resource="com/zzu/entity/society.hbm.xml"/>
+<mapping resource="life/playTogether/entity/activity.hbm.xml" />
+
+
+<!-- 引入用户映射文件 -->
+<mapping resource="persionalCenter/entity/user.hbm.xml"></mapping>
+<mapping resource="persionalCenter/entity/userinfo.hbm.xml"></mapping>
+
+<!-- 引入淘渔映射文件 -->
+<mapping resource="life/taoyu/entity/goods.hbm.xml"></mapping>
+<mapping resource="life/taoyu/entity/order.hbm.xml"></mapping>
+<mapping resource="life/taoyu/entity/orderitems.hbm.xml"></mapping>
+<mapping resource="life/taoyu/entity/comments_L1.hbm.xml"></mapping>
+<mapping resource="life/taoyu/entity/comments_L2.hbm.xml"></mapping>
+<mapping resource="life/taoyu/entity/cart.hbm.xml"></mapping>
+
+
+
+
+
+	</session-factory>
+</hibernate-configuration>

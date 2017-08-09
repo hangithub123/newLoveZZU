@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="life.treeHole.entity.TreeHole" table="t_treehole">
+		<id name="treeHoleid" column="treeHoleid" >
+			<generator class="native"></generator>
+		</id>
+        <property name="phoneTreeHole" column="phoneTreeHole"></property>
+		<property name="praiseNumber" column="praiseNumber"></property>
+		<property name="commentNumber" column="commentNumber"></property>
+		<property name="content" column="content"></property>
+		
+		<set name="treeHoleComment" cascade="save-update" inverse="false" lazy="false">
+		<key column="treeHoleid"></key>
+		<one-to-many  class="life.treeHole.entity.TreeHoleComment"/>
+		
+		</set>
+   <!-- 配置映射用户信息表 -->
+		
+	</class>
+</hibernate-mapping>

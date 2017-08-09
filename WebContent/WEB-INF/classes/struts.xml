@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<constant name="struts.custom.i18n.resources" value="i18n"></constant>
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 用户模块 -->
+	<include file="zzu/struts_xml/module.user.xml"></include>
+	<!-- 文件上传下载模块 -->
+	<include file="zzu/struts_xml/module.fileDU.xml"></include>
+	<!-- 淘渔模块 -->
+	<include file="zzu/struts_xml/module.taoyu.xml"></include>
+	
+	
+	<!-- 用户模块 -->
+
+<!-- 文件上传下载模块 -->
+<include file="com/zzu/struts/xml/module.fileDU.xml"/>
+<!-- 校园新闻首页图片上传下载模块 -->
+<include file="com/zzu/struts/xml/module.Activity.xml"/>
+<include file="com/zzu/struts/xml/module.img.xml"/>
+<include file="com/zzu/struts/xml/module.news.xml"/>
+<include file="com/zzu/struts/xml/module.partTimeJob.xml"/>
+
+<include file="com/zzu/struts/xml/module.treeHole.xml"/>
+<include file="com/zzu/struts/xml/module.Subject.xml"/>
+
+</struts>

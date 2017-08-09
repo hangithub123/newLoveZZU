@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 注入属性值 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///lovezzudb?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="mysql"></property>
+	
+	</bean>
+	<!-- sessionFactory创建交给spring管理 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 因为在hibernate核心配置文件中，没有数据库配置，数据库配置在spring里面配置，注入dataSource -->
+		<property name="dataSource" ref="dataSource"></property>
+
+		<!-- 指定使用hibernate核心配置文件 -->
+		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	<!-- 开启事物 -->
+	<!-- 第一步 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<!--注入sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 第二步 开启事务的注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- 开启对象和属性注解扫描 -->
+	<context:component-scan base-package="life"/>
+	<context:component-scan base-package="friend"/>
+	<context:component-scan base-package="homePage"/>
+	<context:component-scan base-package="topicCircle"/>
+	<context:component-scan base-package="treeHole"/>
+	<context:component-scan base-package="persionalCenter"/>
+	<context:component-scan base-package="zzu"/>
+	<context:component-scan base-package="com.zzu"/>
+	
+
+	<!-- 创建对象 -->
+
+	<!-- 特别注意 注入 对象的时候 property的name值 ， 是在类里面声明的对象名称，不是在bean文件里创建对象的名称 -->
+
+
+	<!-- 创建hibernateTemplate对象 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<!-- 注入sessionFactory对象 -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+
+
+
+<aop:aspectj-autoproxy proxy-target-class="true" />
+
+
+</beans>

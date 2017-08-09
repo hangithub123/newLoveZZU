@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="persionalCenter.entity.UserInfo" table="t_userinfo" dynamic-update="true">
+    <id name="info_id" >
+    <generator class="native"></generator>
+    </id>
+     <property name="imageUrl" column="imageUrl"></property>
+    <property name="nickname" column="nickname"></property>  
+     <property name="phone" column="phone"></property>
+     <property name="Qr_codeUrl" column="Qr_codeUrl"></property>
+     <property name="gender" column="gender"></property>
+     <property name="hometown" column="hometown"></property>
+     <property name="academy" column="academy"></property>
+     <property name="departments" column="departments"></property>
+     <property name="professional" column="professional"></property>
+   <many-to-one name="user" class="persionalCenter.entity.User" column="ul_id" lazy="false"></many-to-one>
+   </class>
+   </hibernate-mapping>

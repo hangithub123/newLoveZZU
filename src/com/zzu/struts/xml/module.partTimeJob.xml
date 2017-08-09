@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="zzuAction07" extends="struts-default" namespace="/">
+		<!-- class属性里面不写action全路径了，因为写，action对象创建两次
+			写spring配置的action的bean的id值addAdvisoryAndNewsAction
+		 -->
+
+		
+		<action name="addPartTimeJobAction" class="addPartTimeJobAction" method="save">
+		<result name="success">/addSocietyNewsSuccess.jsp</result>
+		</action>
+		
+		<action name="JobsByPhone" class="findPartTimeJobAction" method="JobsByPhone">
+		<result name="success">/partTImeJob.jsp</result>
+		</action>
+		
+		<action name="JobsByIdentifier" class="findPartTimeJobAction" method="JobsByIdentifier">
+		<result name="success">/partTImeJob.jsp</result>
+		</action>
+		
+		<action name="singleJob" class="findPartTimeJobAction" method="singleJob">
+		<result name="success">/partTImeJob.jsp</result>
+		</action>
+		
+		<action name="allJobs" class="findPartTimeJobAction" method="allJobs">
+		<result name="success">/partTImeJob.jsp</result>
+		</action>
+	</package>
+	
+</struts>

@@ -1,0 +1,38 @@
+
+*{
+	height:100%;
+	weight:100%;
+	 margin: 0px;
+	 padding:0px;
+	 
+	}
+
+@MEDIA only screen and (min-width:100px) {
+	
+	.top,
+	.main{
+	
+	weight:100%;
+	}
+	.top
+	{
+
+	padding-top:4px;
+	height:10%;
+	float:top;
+	border-bottom:1px solid #9494c5;
+	
+	}
+
+	.main{
+	height:88%;
+ padding-top:4px;
+ 
+	}
+	
+	
+}
+
+
+
+

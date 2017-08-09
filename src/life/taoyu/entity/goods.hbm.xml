@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="life.taoyu.entity.Goods" table="t_goods" dynamic-update="true">
+    <id name="Goods_id" >
+    <generator class="native"></generator>
+    </id>
+     <property name="Gtype"></property>
+     <property name="Gname"></property>
+     <property name="Gcampus"></property>
+     <property name="Gdescribe"></property>
+     <property name="Gprice"></property>
+     <property name="Gimage" column="Gimage" length="2660"></property>
+     <property name="Gdate"></property>
+    
+     <property name="Gcomments"></property>
+     <property name="Gsearch"></property>
+    
+   <many-to-one name="user" class="persionalCenter.entity.User" column="UG_id" ></many-to-one>
+ <!-- 配置一级评论表-->
+  <set name="setcomments_L1" cascade="all" inverse="true">
+  <key column="GC_id"></key>
+  <one-to-many class="life.taoyu.entity.Comments_L1" />
+  </set>  
+   </class>
+   </hibernate-mapping>
